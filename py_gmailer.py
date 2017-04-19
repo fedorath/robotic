@@ -38,7 +38,7 @@ def gmail(png_file):
 	#if you are not using keyring, comment out the text below
 	app_spec_pwd = keyring.get_password("credentials", "gmail")
 	#if you are not using keyring, uncomment the text below
-	#app_spec_pwd = "kurtax%1"
+	app_spec_pwd = "kurtax%1"
 
 	#create variables for the "to" and "from" email addresses
 	TO = ["kurtax.h1@googlemail.com"]
