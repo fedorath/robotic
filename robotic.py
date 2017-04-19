@@ -1,21 +1,12 @@
-from SimpleCV import Image, Camera, Display
-import sys
+#import the SimpleCV library
+from SimpleCV import *
 
+#initialize the camera
+cam = Camera()
 
-disp = Display((640,480))
-
-def tryit(i):
-    try:
-        if i>=5:
-            print "Nao Existe Camera!"
-            sys.exit()
-
-        cam = Camera(i)
-        while disp.isNotDone():
-            img = cam.getImage()
-            img.save(disp)
-    except:
-        i+=1
-        tryit(i)
-
-tryit(-1)
+#grab the image from the camera
+img  = cam.getImage()
+#show the image in a new window
+img.show()
+#save the image to a file within the project folder
+img.save('image.png')
