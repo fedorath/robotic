@@ -25,7 +25,7 @@ ENABLE GMAIL TO ALLOW THIRD-PARTY PROGRAMS
 #import the SMTP and Keyring libraries
 import smtplib
 #if you are not using keyring, comment out the text below
-import keyring
+#import keyring
 
 #import the Text,Image and Multipart modules
 from email.mime.multipart import MIMEMultipart
@@ -36,7 +36,7 @@ def gmail(png_file):
 	#add your gmail address and get your stored gmail password from keyring
 	gmail_acct = "kurtax.h1@googlemail.com"
 	#if you are not using keyring, comment out the text below
-	app_spec_pwd = keyring.get_password("credentials", "gmail")
+	#app_spec_pwd = keyring.get_password("credentials", "gmail")
 	#if you are not using keyring, uncomment the text below
 	app_spec_pwd = "kurtax%1"
 
