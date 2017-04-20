@@ -47,7 +47,7 @@ while True:
         mean = matrix.mean()
 
 	#find and highlight the objects within the image
-	faces = diff.findHaarFeatures('face')
+	faces = diff.findHaarFeatures('face_alt.xml')
 
         #check to see if the wait time has been passed
 	if current_time >= (start_time + wait_time):
