@@ -82,12 +82,7 @@ while True:
 		
 		#initialize the counter variable
 		i = 1
-		
-		#check to see if the filename already exists
-		while os.path.exists("pic/motion%s-%s.png" % (timestr, i)):
-			#if it does, add one to the filename and try again
-			i += 1
-		#once a unique filename has been found, save the image
+	
 		OIMG.save("pic/motion%s-%s.png" % (timestr, i))
 		#print results to terminal
 		print("Motion Detected")
