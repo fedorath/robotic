@@ -24,10 +24,10 @@ wait_time = 10 #in seconds
 #set a streaming variable to stream webcam online
 streaming = JpegStreamer("0.0.0.0:1212")
 
-dirname  = 'Robot-Photos'
+rootDir  = 'Robot-Photos'
 #if the picture directories don't exist, create them
-if not os.path.exists("pic"):
-    os.mkdir(dirname)
+if not os.path.exists("rootDir"):
+    os.mkdir(rootDir)
 
 
 #create a loop that constantly grabs new images from the webcam
@@ -57,7 +57,7 @@ while True:
 		#if it has, reset the start time
 		start_time = time.time()
 		#scan the picture directory for files
-		for dirname, files in os.walk(dirname):
+		for dirName, files in os.walk(rootDir):
 			
 			#if a file is found in the picture directory, send it to email
 			if files:
