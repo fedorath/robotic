@@ -23,7 +23,7 @@ threshold = 2
 start_time = time.time()
 wait_time = 30 #in seconds
 
-dst = "pic"
+dst = "Kurt"
 bkp = "pic_bkp" 
 #if the picture directories don't exist, create them
 if not os.path.exists("pic"):
