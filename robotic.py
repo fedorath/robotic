@@ -26,8 +26,8 @@ streaming = JpegStreamer("0.0.0.0:1212")
 
 rootDir  = 'Robot-Photos'
 #if the picture directories don't exist, create them
-if not os.path.exists("rootDir"):
-    os.mkdir(rootDir)
+if not os.path.exists("img"):
+    os.mkdir("img")
 
 
 #create a loop that constantly grabs new images from the webcam
