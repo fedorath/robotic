@@ -35,6 +35,9 @@ while True:
 	
         img01 = cam.getImage().toGray()
 	
+	face = img01.findHaarFeatures("face_alt.xml")
+		face =  face[0].boundingBox()
+    		face = i.crop(face)
 	time.sleep(1)
 	#grab an unedited still to use as our original image
 	OIMG = cam.getImage()
