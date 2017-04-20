@@ -1,21 +1,26 @@
-'''Kurtis Hall
-Object detection
-and Sending Email
+'''THIS IS A MOTION DETECTING PROGRAM FOR THE RASPBERRY PI
+It is part of a tutorial series that you can find here:
+https://www.youtube.com/playlist?list=PLlg8lN4r9qWiDzF13lJY-lGtiTFHHGcpx
+Running this program requires installing SimpleCV as well as
+a few other prerequisits on your pi. You can find detailed
+instructions for how to do that here:
+http://tinkernut.com/YtQH9
 '''
+
 #!/usr/bin/python
 
-#Importing Libraries: SimpleCV, Emailer, shutil
+#import the SimpleCV, shutil and the custom  py_gmailer  libraries
 from SimpleCV import *
 import py_gmailer
 import shutil
 
-#Starts Camera
+#initialize the camer
 cam = Camera()
-#Display set to 300 by 300
-display = Display((300,300))
+#set the max display size
+display = Display((800,600))
 
-#Motion sensitivity using a threshold variable
-threshold = 2
+#create a threshold variable to change  motion sensitivity
+threshold = 5.0
 
 #set timer variables for email loop
 start_time = time.time()
@@ -39,15 +44,15 @@ while True:
         #set a time variable that updates with the loop
         current_time = time.time()
         #grab an image still from the camera and convert it to grayscale
-        img1 = cam.getImage().toGray()
+        img01 = cam.getImage().toGray()
         #wait half a second
         time.sleep(0.5)
 	#grab an unedited still to use as our original image
 	original = cam.getImage()
         #grab another image still from the camera and conver it to grayscale
-        img2 = cam.getImage().toGray()
+        img02 = cam.getImage().toGray()
         #subract the images from each other, binarize and inver the colors
-        diff = (img1 - img2).binarize(50).invert()
+        diff = (img01 - img02).binarize(50).invert()
 
         #dump all the values into a Numpy matrix and extract the mean avg
         matrix = diff.getNumpy()
@@ -84,7 +89,7 @@ while True:
 			for b in blobs:
 				try:
 					loc = (b.x,b.y) #locates center of object
-					img.drawCircle(loc,b.radius(),Color.RED,2)
+					original.drawCircle(loc,b.radius(),Color.RED,2)
 				except:
 					e = sys.exc_info()[0]
 		#use the current date to create a unique file name
