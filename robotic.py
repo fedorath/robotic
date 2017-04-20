@@ -32,10 +32,12 @@ if not os.path.exists("pic_bkp"):
 #create a loop that constantly grabs new images from the webcam
 while True:
         current_time = time.time()
-       
+        img01 = cam.getImage().toGray()
 	#grab an unedited still to use as our original image
 	OIMG = cam.getImage()
-        
+	diff = (img01).binarize(50).invert()
+        matrix = diff.getNumpy()
+        mean = matrix.mean()
 
 	#find and highlight the objects within the image
 	skin = OIMG.findSkintoneBlobs()
