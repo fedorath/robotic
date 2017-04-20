@@ -17,10 +17,10 @@ import shutil
 #initialize the camer
 cam = Camera()
 #set the max display size
-display = Display((800,600))
+display = Display((300,300))
 
 #create a threshold variable to change  motion sensitivity
-threshold = 5.0
+threshold = 2
 
 #set timer variables for email loop
 start_time = time.time()
