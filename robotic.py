@@ -36,7 +36,7 @@ while True:
         img01 = cam.getImage().toGray()
 	time.sleep(1)
 	#grab an unedited still to use as our original image
-	OIMG = cam.getImage()
+        OIMG = cam.getImage()
 	img02 = cam.getImage().toGray()
 
 	
@@ -46,7 +46,7 @@ while True:
         mean = matrix.mean()
 
 	#find and highlight the objects within the image
-	blobs = diff.findBlobs()
+	Circle = diff.findBlobs()
 
         #check to see if the wait time has been passed
 	if current_time >= (start_time + wait_time):
@@ -70,13 +70,13 @@ while True:
 	if mean >= threshold:
 
 		#check to see if any objects were detected
-		if blobs:
+		if Circle:
 			#find the central point of each object
 			#and draw a red circle around it
-			for b in blobs:
+			for C in Circle:
 				try:
-					loc = (b.x,b.y) #locates center of object
-					blob.drawCircle(loc,b.radius(),Color.GREEN,2)
+					loc = (c.x,c.y) #locates center of object
+					OIMG.drawCircle(loc,b.radius(),Color.GREEN,2)
 				except:
 					e = sys.exc_info()[0]
 					
