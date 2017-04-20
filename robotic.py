@@ -53,7 +53,7 @@ while True:
 		#if it has, reset the start time
 		start_time = time.time()
 		#scan the picture directory for files
-		ffor root, dirs, files in os.walk(dst):
+		for root, dirs, files in os.walk(dst):
 			dst_root = root.replace(dst, bkp)
 			#if a file is found in the picture directory, send it to email
 			if files:
