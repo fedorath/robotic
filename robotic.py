@@ -12,9 +12,9 @@ import shutil
 i = 1	
 
 #Starts Camera
-cam = Camera()
+camera = Camera()
 #Display set to 300 by 300
-display = Display((300,300))
+camera.resolution = (320, 300)
 
 #Motion sensitivity using a threshold variable
 threshold = 2
@@ -35,13 +35,13 @@ if not os.path.exists("pic_bkp"):
 while True:
         current_time = time.time()
         #grab an image still from the camera and convert it to grayscale
-        img1 = cam.getImage().toGray()
+        img1 = camera.capture().toGray()
         #wait half a second
         time.sleep(0.5)
 	#grab an unedited still to use as our original image
-	OIMG = cam.getImage()
+	OIMG = camera.capture()
         #grab another image still from the camera and conver it to grayscale
-        img2 = cam.getImage().toGray()
+        img2 = camera.capture().toGray()
         #subract the images from each other, binarize and inver the colors
         diff = (img1 - img2).binarize(50).invert()
 
@@ -80,18 +80,16 @@ while True:
 			for b in blobs:
 				try:
 					loc = (b.x,b.y) #locates center of object
-					OIMG.drawCircle(loc,b.radius(),Color.RED,2)
+					OIMG.drawCircle(loc,b.radius(),Color.GREEN,2)
 				except:
 					e = sys.exc_info()[0]
 					
 			
 		#use the current date to create a unique file name
-		timestr = time.strftime("%Y%m%d-%H%M%S")
+		timestr = time.strftime("%y%a%H%M")
 		
-		
-	
-		OIMG.save("pic/motion%s-%s.png" % (timestr, i))
-		#print results to terminal
-		print("Motion Detected")
+		OIMG.save("Kurt/INTRUDER%s-%s.png" % (timestr, i))
+		#Terminal prints "detected intruder"
+		print("Detected intruder!")
 		
 	
