@@ -15,7 +15,7 @@ i = 1
 #Starts Camera
 cam = Camera(prop_set = {"width": 640, "height": 480})
 #Motion sensitivity using a threshold variable
-threshold = 8
+threshold = 1
 
 #set timer variables for email loop
 start_time = time.time()
@@ -38,10 +38,9 @@ while True:
 	#grab an unedited still to use as our original image
 	OIMG = cam.getImage()
 	img02 = cam.getImage().toGray()
+
 	
-	img03 = cam.getImage().toGray()
-	
-	diff = (img01 - img02 - img03).binarize(50).invert()
+	diff = (img01 - img02).binarize(50).invert()
 	
         matrix = diff.getNumpy()
         mean = matrix.mean()
