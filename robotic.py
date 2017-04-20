@@ -24,10 +24,9 @@ wait_time = 10 #in seconds
 #set a streaming variable to stream webcam online
 streaming = JpegStreamer("0.0.0.0:1212")
 
-rootDir  = "img"
+dirname  = "img"
 #if the picture directories don't exist, create them
-if not os.path.exists("img"):
-    os.mkdir("img")
+
 
 
 #create a loop that constantly grabs new images from the webcam
@@ -57,16 +56,18 @@ while True:
 		#if it has, reset the start time
 		start_time = time.time()
 		#scan the picture directory for files
-		for root, dir, files in os.walk(rootDir):
-		    rootDir_root = root.replace(rootDir)
+		for root, dirs, files in os.walk(dirname):
+			dirname_root = root.replace(dirname, bkp)
 			#if a file is found in the picture directory, send it to email
-		    if files:
-			sortedfiles  = sorted(files)[0]
-			img_mailer = os.path.join(root, sortedfiles )
-			py_gmailer.gmail(img_mailer)
-		    for file_ in files:
-			src_file = os.path.join(root, file_)
-			rootDir_file = os.path.join(rootDir_root, file_)
+			if files:
+				firstfile = sorted(files)[0]
+				img_mailer = os.path.join(root, firstfile)
+				py_gmailer.gmail(img_mailer)
+			#move any files in the pic directory to the backup directory
+			for file_ in files:
+				src_file = os.path.join(root, file_)
+				dst_file = os.path.join(dst_root, file_)
+				shutil.move(src_file, dirname_root)
 				
         #if the mean is greater than our threshold variable, then look for objects
 	if mean >= threshold:
