@@ -21,25 +21,19 @@ threshold = 2
 start_time = time.time()
 wait_time = 30 #in seconds
 
-#set a streaming variable to stream webcam online
-streaming = JpegStreamer("0.0.0.0:1212")
-
 dirname  = "img"
 bkp = "pic_bkp" 
 #if the picture directories don't exist, create them
 
-
-
 #create a loop that constantly grabs new images from the webcam
 while True:
-        #set a time variable that updates with the loop
         current_time = time.time()
         #grab an image still from the camera and convert it to grayscale
         img1 = cam.getImage().toGray()
         #wait half a second
         time.sleep(0.5)
 	#grab an unedited still to use as our original image
-	original = cam.getImage()
+	OIMG = cam.getImage()
         #grab another image still from the camera and conver it to grayscale
         img2 = cam.getImage().toGray()
         #subract the images from each other, binarize and inver the colors
@@ -94,9 +88,6 @@ while True:
 			#if it does, add one to the filename and try again
 			i += 1
 		#once a unique filename has been found, save the image
-		original.save("pic/motion%s-%s.png" % (timestr, i))
+		OIMG.save("pic/motion%s-%s.png" % (timestr, i))
 		#print results to terminal
 		print("Motion Detected")
-
-	#send the current image to the webcam stream
-	original.save(streaming)
