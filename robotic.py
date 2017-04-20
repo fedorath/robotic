@@ -12,9 +12,9 @@ import shutil
 i = 1	
 
 #Starts Camera
-cam = Camera()
-#Display set to 300 by 300
 cam = Camera(prop_set = {"width": 640, "height": 480})
+#Display set to 300 by 300
+
 
 #Motion sensitivity using a threshold variable
 threshold = 2
@@ -26,8 +26,8 @@ wait_time = 30 #in seconds
 dst = "Kurt"
 bkp = "pic_bkp" 
 #if the picture directories don't exist, create them
-if not os.path.exists("pic"):
-	os.makedirs("pic")
+if not os.path.exists("Kurt"):
+	os.makedirs("Kurt")
 if not os.path.exists("pic_bkp"):
 	os.makedirs("pic_bkp")
 
