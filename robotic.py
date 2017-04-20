@@ -13,7 +13,8 @@ import shutil
 i = 1	
 
 #Starts Camera
-cam = Camera(prop_set = {"width": 640, "height": 480})
+cam = Camera()
+disp = Display(cam.getImage().size())
 #Motion sensitivity using a threshold variable
 threshold = 1
 
@@ -46,7 +47,7 @@ while True:
         mean = matrix.mean()
 
 	#find and highlight the objects within the image
-	Circle = diff.findBlobs()
+	faces = diff.findHaarFeatures('face')
 
         #check to see if the wait time has been passed
 	if current_time >= (start_time + wait_time):
@@ -70,15 +71,11 @@ while True:
 	if mean >= threshold:
 
 		#check to see if any objects were detected
-		if Circle:
-			#find the central point of each object
-			#and draw a red circle around it
-			for C in Circle:
-				try:
-					loc = (C.x,C.y) #locates center of object
-					OIMG.drawCircle(loc,C.radius(),Color.GREEN,2)
-				except:
-					e = sys.exc_info()[0]
+		if faces is not None:
+			faces = faces.sortArea()
+			bigFace = faces[-1]
+
+			bigface.draw()
 		#use the current date to create a unique file name
 		timestr = time.strftime("%y%a%H%M")	
 		
