@@ -26,6 +26,7 @@ streaming = JpegStreamer("0.0.0.0:1212")
 
 dirname  = 'Robot-Photos'
 #if the picture directories don't exist, create them
+if not os.path.exists("pic"):
 os.mkdir(dirname)
 
 
