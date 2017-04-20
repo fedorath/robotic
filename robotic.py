@@ -9,7 +9,7 @@ from SimpleCV import *
 import py_gmailer
 import shutil
 #initialize the counter variable
-		i = 1	
+i = 1	
 
 #Starts Camera
 cam = Camera()
