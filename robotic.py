@@ -77,12 +77,16 @@ while True:
 					OIMG.drawCircle(loc,b.radius(),Color.RED,2)
 				except:
 					e = sys.exc_info()[0]
+					
+			
 		#use the current date to create a unique file name
 		timestr = time.strftime("%Y%m%d-%H%M%S")
 		
-		#initialize the counter variable
-		i = 1
+		
 	
 		OIMG.save("pic/motion%s-%s.png" % (timestr, i))
 		#print results to terminal
 		print("Motion Detected")
+		
+	#initialize the counter variable
+		i = 1	
