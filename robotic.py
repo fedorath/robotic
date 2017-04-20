@@ -19,7 +19,7 @@ threshold = 2
 
 #set timer variables for email loop
 start_time = time.time()
-wait_time = 60 #in seconds
+wait_time = 10 #in seconds
 
 #set a streaming variable to stream webcam online
 streaming = JpegStreamer("0.0.0.0:1212")
@@ -27,7 +27,7 @@ streaming = JpegStreamer("0.0.0.0:1212")
 dirname  = 'Robot-Photos'
 #if the picture directories don't exist, create them
 if not os.path.exists("pic"):
-os.mkdir(dirname)
+    os.mkdir(dirname)
 
 
 #create a loop that constantly grabs new images from the webcam
