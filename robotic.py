@@ -32,15 +32,19 @@ if not os.path.exists("pic_bkp"):
 #create a loop that constantly grabs new images from the webcam
 while True:
         current_time = time.time()
+	
         img01 = cam.getImage().toGray()
+	
+	time.sleep(1)
 	#grab an unedited still to use as our original image
 	OIMG = cam.getImage()
+	
 	diff = (img01).binarize(50).invert()
         matrix = diff.getNumpy()
         mean = matrix.mean()
 
 	#find and highlight the objects within the image
-	skin = OIMG.findSkintoneBlobs()
+	skin = OIMG.findBlobs()
 
         #check to see if the wait time has been passed
 	if current_time >= (start_time + wait_time):
@@ -64,13 +68,13 @@ while True:
 	if mean >= threshold:
 
 		#check to see if any objects were detected
-		if skin:
+		if blob:
 			#find the central point of each object
 			#and draw a red circle around it
-			for i in skin:
+			for i in blob:
 				try:
 					loc = (s.x,s.y) #locates center of object
-					skin.drawCircle(loc,s.radius(),Color.GREEN,2)
+					blob.drawCircle(loc,s.radius(),Color.GREEN,2)
 				except:
 					e = sys.exc_info()[0]
 					
