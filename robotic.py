@@ -12,7 +12,7 @@ import shutil
 i = 1	
 
 #Starts Camera
-camera = Camera()
+cam = Camera()
 #Display set to 300 by 300
 camera.resolution = (320, 300)
 
@@ -35,13 +35,13 @@ if not os.path.exists("pic_bkp"):
 while True:
         current_time = time.time()
         #grab an image still from the camera and convert it to grayscale
-        img1 = camera.capture().toGray()
+        img1 = cam.getImage().toGray()
         #wait half a second
         time.sleep(0.5)
 	#grab an unedited still to use as our original image
-	OIMG = camera.capture()
+	OIMG = cam.getImage()
         #grab another image still from the camera and conver it to grayscale
-        img2 = camera.capture().toGray()
+        img2 = cam.getImage().toGray()
         #subract the images from each other, binarize and inver the colors
         diff = (img1 - img2).binarize(50).invert()
 
