@@ -14,7 +14,7 @@ i = 1
 #Starts Camera
 cam = Camera()
 #Display set to 300 by 300
-camera.resolution = (320, 300)
+cam = Camera(prop_set = {"width": 640, "height": 480})
 
 #Motion sensitivity using a threshold variable
 threshold = 2
