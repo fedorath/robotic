@@ -80,7 +80,9 @@ while True:
 				except:
 					e = sys.exc_info()[0]
 					
-			
+		while os.path.exists("pic/motion%s-%s.png" % (timestr, i)):
+			#if it does, add one to the filename and try again
+			i += 1
 		#use the current date to create a unique file name
 		timestr = time.strftime("%y%a%H%M")
 		
