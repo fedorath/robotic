@@ -26,6 +26,10 @@ wait_time = 30 #in seconds
 dst = "pic"
 bkp = "pic_bkp" 
 #if the picture directories don't exist, create them
+if not os.path.exists("pic"):
+	os.makedirs("pic")
+if not os.path.exists("pic_bkp"):
+	os.makedirs("pic_bkp")
 
 #create a loop that constantly grabs new images from the webcam
 while True:
