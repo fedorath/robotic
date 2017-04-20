@@ -1,25 +1,20 @@
-'''THIS IS A MOTION DETECTING PROGRAM FOR THE RASPBERRY PI
-It is part of a tutorial series that you can find here:
-https://www.youtube.com/playlist?list=PLlg8lN4r9qWiDzF13lJY-lGtiTFHHGcpx
-Running this program requires installing SimpleCV as well as
-a few other prerequisits on your pi. You can find detailed
-instructions for how to do that here:
-http://tinkernut.com/YtQH9
+'''Kurtis Hall
+Object detection
+and Sending Email
 '''
-
 #!/usr/bin/python
 
-#import the SimpleCV, shutil and the custom  py_gmailer  libraries
+#Importing Libraries: SimpleCV, Emailer, shutil
 from SimpleCV import *
 import py_gmailer
 import shutil
 
-#initialize the camer
+#Starts Camera
 cam = Camera()
-#set the max display size
+#Display set to 300 by 300
 display = Display((300,300))
 
-#create a threshold variable to change  motion sensitivity
+#Motion sensitivity using a threshold variable
 threshold = 2
 
 #set timer variables for email loop
@@ -29,30 +24,25 @@ wait_time = 60 #in seconds
 #set a streaming variable to stream webcam online
 streaming = JpegStreamer("0.0.0.0:1212")
 
-#create destination & backup directories for the pictures
-dst = "pic" #destination directory for images
-bkp = "pic_bkp" #backup  directory for images
-
+dirname  = 'Robot-Photos'
 #if the picture directories don't exist, create them
-if not os.path.exists("pic"):
-	os.makedirs("pic")
-if not os.path.exists("pic_bkp"):
-	os.makedirs("pic_bkp")
+os.mkdir(dirname)
+
 
 #create a loop that constantly grabs new images from the webcam
 while True:
         #set a time variable that updates with the loop
         current_time = time.time()
         #grab an image still from the camera and convert it to grayscale
-        img01 = cam.getImage().toGray()
+        img1 = cam.getImage().toGray()
         #wait half a second
         time.sleep(0.5)
 	#grab an unedited still to use as our original image
 	original = cam.getImage()
         #grab another image still from the camera and conver it to grayscale
-        img02 = cam.getImage().toGray()
+        img2 = cam.getImage().toGray()
         #subract the images from each other, binarize and inver the colors
-        diff = (img01 - img02).binarize(50).invert()
+        diff = (img1 - img2).binarize(50).invert()
 
         #dump all the values into a Numpy matrix and extract the mean avg
         matrix = diff.getNumpy()
@@ -66,18 +56,13 @@ while True:
 		#if it has, reset the start time
 		start_time = time.time()
 		#scan the picture directory for files
-		for root, dirs, files in os.walk(dst):
-			dst_root = root.replace(dst, bkp)
+		for root, dirname, files in os.walk(dirname):
+			dirname_root = root.replace(dirname)
 			#if a file is found in the picture directory, send it to email
 			if files:
-				firstfile = sorted(files)[0]
-				img_mailer = os.path.join(root, firstfile)
+				sortedfiles  = sorted(files)[0]
+				img_mailer = os.path.join(root, sortedfiles )
 				py_gmailer.gmail(img_mailer)
-			#move any files in the pic directory to the backup directory
-			for file_ in files:
-				src_file = os.path.join(root, file_)
-				dst_file = os.path.join(dst_root, file_)
-				shutil.move(src_file, dst_root)
 
         #if the mean is greater than our threshold variable, then look for objects
 	if mean >= threshold:
@@ -89,7 +74,7 @@ while True:
 			for b in blobs:
 				try:
 					loc = (b.x,b.y) #locates center of object
-					original.drawCircle(loc,b.radius(),Color.RED,2)
+					img.drawCircle(loc,b.radius(),Color.RED,2)
 				except:
 					e = sys.exc_info()[0]
 		#use the current date to create a unique file name
