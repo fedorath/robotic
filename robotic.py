@@ -24,7 +24,7 @@ wait_time = 10 #in seconds
 #set a streaming variable to stream webcam online
 streaming = JpegStreamer("0.0.0.0:1212")
 
-rootDir  = 'Robot-Photos'
+rootDir  = "img"
 #if the picture directories don't exist, create them
 if not os.path.exists("img"):
     os.mkdir("img")
