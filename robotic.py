@@ -25,6 +25,7 @@ wait_time = 10 #in seconds
 streaming = JpegStreamer("0.0.0.0:1212")
 
 dirname  = "img"
+bkp = "pic_bkp" 
 #if the picture directories don't exist, create them
 
 
