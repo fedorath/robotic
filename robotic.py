@@ -67,7 +67,7 @@ while True:
 			#move any files in the pic directory to the backup directory
 			for file_ in files:
 				src_file = os.path.join(root, file_)
-				dst_file = os.path.join(dst_root, file_)
+				dirname_file = os.path.join(dirname_root, file_)
 				shutil.move(src_file, dirname_root)
 				
         #if the mean is greater than our threshold variable, then look for objects
