@@ -8,6 +8,8 @@ and Sending Email
 from SimpleCV import *
 import py_gmailer
 import shutil
+#initialize the counter variable
+		i = 1	
 
 #Starts Camera
 cam = Camera()
@@ -88,5 +90,4 @@ while True:
 		#print results to terminal
 		print("Motion Detected")
 		
-	#initialize the counter variable
-		i = 1	
+	
