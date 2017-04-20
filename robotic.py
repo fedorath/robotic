@@ -57,12 +57,12 @@ while True:
 		#if it has, reset the start time
 		start_time = time.time()
 		#scan the picture directory for files
-		for root, dirname, files in os.walk(dirname):
-			dirname_root = root.replace(dirname)
+		for dirname, files in os.walk(dirname):
+			
 			#if a file is found in the picture directory, send it to email
 			if files:
 				sortedfiles  = sorted(files)[0]
-				img_mailer = os.path.join(root, sortedfiles )
+				img_mailer = os.path.join(sortedfiles )
 				py_gmailer.gmail(img_mailer)
 
         #if the mean is greater than our threshold variable, then look for objects
