@@ -23,7 +23,7 @@ threshold = 2
 start_time = time.time()
 wait_time = 30 #in seconds
 
-dirname  = "img"
+dst = "pic"
 bkp = "pic_bkp" 
 #if the picture directories don't exist, create them
 
@@ -53,8 +53,8 @@ while True:
 		#if it has, reset the start time
 		start_time = time.time()
 		#scan the picture directory for files
-		for root, files in os.walk(dirname):
-			dirname_root = root.replace(dirname, bkp)
+		for root, dirs, files in os.walk(dst):
+			dst_root = root.replace(dst, bkp)
 			#if a file is found in the picture directory, send it to email
 			if files:
 				firstfile = sorted(files)[0]
@@ -63,8 +63,8 @@ while True:
 			#move any files in the pic directory to the backup directory
 			for file_ in files:
 				src_file = os.path.join(root, file_)
-				dirname_file = os.path.join(dirname_root, file_)
-				shutil.move(src_file, dirname_root)
+				dst_root = os.path.join(dst_root, file_)
+				shutil.move(src_file, dst_root)
 				
         #if the mean is greater than our threshold variable, then look for objects
 	if mean >= threshold:
