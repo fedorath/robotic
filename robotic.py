@@ -34,20 +34,20 @@ while True:
         current_time = time.time()
 	
         img01 = cam.getImage().toGray()
-	
-	face = img01.findHaarFeatures("face_alt.xml")
-	face =  face[0].boundingBox()
-    	face = i.crop(face)
 	time.sleep(1)
 	#grab an unedited still to use as our original image
 	OIMG = cam.getImage()
+	img02 = cam.getImage().toGray()
 	
-	diff = (img01).binarize(50).invert()
+	img03 = cam.getImage().toGray()
+	
+	diff = (img01 - img02 - img03).binarize(50).invert()
+	
         matrix = diff.getNumpy()
         mean = matrix.mean()
 
 	#find and highlight the objects within the image
-	blob = OIMG.findBlobs()
+	blob = diff.findBlobs()
 
         #check to see if the wait time has been passed
 	if current_time >= (start_time + wait_time):
@@ -74,10 +74,10 @@ while True:
 		if blob:
 			#find the central point of each object
 			#and draw a red circle around it
-			for i in blob:
+			for b in blob:
 				try:
-					loc = (s.x,s.y) #locates center of object
-					blob.drawCircle(loc,s.radius(),Color.GREEN,2)
+					loc = (b.x,b.y) #locates center of object
+					blob.drawCircle(loc,b.radius(),Color.GREEN,2)
 				except:
 					e = sys.exc_info()[0]
 					
