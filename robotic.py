@@ -32,23 +32,13 @@ if not os.path.exists("pic_bkp"):
 #create a loop that constantly grabs new images from the webcam
 while True:
         current_time = time.time()
-        #grab an image still from the camera and convert it to grayscale
-        img1 = cam.getImage().toGray()
-        #wait half a second
-        time.sleep(0.5)
+       
 	#grab an unedited still to use as our original image
 	OIMG = cam.getImage()
-        #grab another image still from the camera and conver it to grayscale
-        img2 = cam.getImage().toGray()
-        #subract the images from each other, binarize and inver the colors
-        diff = (img1 - img2).binarize()
-
-        #dump all the values into a Numpy matrix and extract the mean avg
-        matrix = diff.getNumpy()
-        mean = matrix.mean()
+        
 
 	#find and highlight the objects within the image
-	skin = diff.findSkintoneBlobs()
+	skin = OIMG.findSkintoneBlobs()
 
         #check to see if the wait time has been passed
 	if current_time >= (start_time + wait_time):
