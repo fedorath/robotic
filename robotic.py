@@ -75,8 +75,8 @@ while True:
 			#and draw a red circle around it
 			for C in Circle:
 				try:
-					loc = (c.x,c.y) #locates center of object
-					OIMG.drawCircle(loc,b.radius(),Color.GREEN,2)
+					loc = (C.x,C.y) #locates center of object
+					OIMG.drawCircle(loc,C.radius(),Color.GREEN,2)
 				except:
 					e = sys.exc_info()[0]
 					
