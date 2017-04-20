@@ -13,11 +13,8 @@ i = 1
 
 #Starts Camera
 cam = Camera(prop_set = {"width": 640, "height": 480})
-#Display set to 300 by 300
-
-
 #Motion sensitivity using a threshold variable
-threshold = 2
+threshold = 8
 
 #set timer variables for email loop
 start_time = time.time()
@@ -43,7 +40,7 @@ while True:
         #grab another image still from the camera and conver it to grayscale
         img2 = cam.getImage().toGray()
         #subract the images from each other, binarize and inver the colors
-        diff = (img1 - img2).binarize(50).invert()
+        diff = (img1 - img2).binarize(50)
 
         #dump all the values into a Numpy matrix and extract the mean avg
         matrix = diff.getNumpy()
