@@ -79,12 +79,13 @@ while True:
 					OIMG.drawCircle(loc,C.radius(),Color.GREEN,2)
 				except:
 					e = sys.exc_info()[0]
-					
+		#use the current date to create a unique file name
+		timestr = time.strftime("%y%a%H%M")	
+		
 		while os.path.exists("pic/motion%s-%s.png" % (timestr, i)):
 			#if it does, add one to the filename and try again
 			i += 1
-		#use the current date to create a unique file name
-		timestr = time.strftime("%y%a%H%M")
+		
 		
 		OIMG.save("Kurt/INTRUDER%s-%s.png" % (timestr, i))
 		#Terminal prints "detected intruder"
