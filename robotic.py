@@ -6,6 +6,7 @@ and Sending Email
 
 #Importing Libraries: SimpleCV, Emailer, shutil
 from SimpleCV import *
+import time
 import py_gmailer
 import shutil
 #initialize the counter variable
@@ -40,7 +41,7 @@ while True:
         #grab another image still from the camera and conver it to grayscale
         img2 = cam.getImage().toGray()
         #subract the images from each other, binarize and inver the colors
-        diff = (img1 - img2).binarize(50)
+        diff = (img1 - img2).binarize()
 
         #dump all the values into a Numpy matrix and extract the mean avg
         matrix = diff.getNumpy()
@@ -71,13 +72,13 @@ while True:
 	if mean >= threshold:
 
 		#check to see if any objects were detected
-		if blobs:
+		if skin:
 			#find the central point of each object
 			#and draw a red circle around it
-			for b in blobs:
+			for i in skin:
 				try:
-					loc = (b.x,b.y) #locates center of object
-					OIMG.drawCircle(loc,b.radius(),Color.GREEN,2)
+					loc = (s.x,s.y) #locates center of object
+					skin.drawCircle(loc,s.radius(),Color.GREEN,2)
 				except:
 					e = sys.exc_info()[0]
 					
