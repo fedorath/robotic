@@ -19,7 +19,7 @@ threshold = 2
 
 #set timer variables for email loop
 start_time = time.time()
-wait_time = 10 #in seconds
+wait_time = 30 #in seconds
 
 #set a streaming variable to stream webcam online
 streaming = JpegStreamer("0.0.0.0:1212")
