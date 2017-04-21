@@ -44,10 +44,10 @@ def gmail(png_file):
 
 	#asemble the message as "MIMEMultipart" mixed
 	msg = MIMEMultipart('mixed')
-	msg['Subject'] = 'Intruder Alert!'
+	msg['Subject'] = 'Important Message!'
 	msg['From'] = FROM
 	msg['To'] = ', '.join(TO)
-	body = MIMEText('Motion was detected on your security camera.', 'plain')
+	body = MIMEText('Intruder has been loacated!', 'plain')
 	msg.attach(body)
 
 	#open up an image file and attach it to the message
