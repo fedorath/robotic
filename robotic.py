@@ -14,7 +14,8 @@ i = 1
 
 #Starts Camera
 cam = Camera()
-disp = Display(cam.getImage().size())
+size = 300,300
+disp = Display().size()
 #Motion sensitivity using a threshold variable
 threshold = 1
 
