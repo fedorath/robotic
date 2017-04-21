@@ -58,7 +58,7 @@ while True:
 			#grab the name of the current image	
 			current_image = ("image%s.png" %i)
 			#send that image to the email program
-			py_gmailer.gmail(current_image)
+			Email.gmail(current_image)
 	
 	#send the current image to the webcam stream
 	img02.save(streaming)
