@@ -3,7 +3,7 @@
 
 #import the SimpleCV and py_gmailer  libraries
 from SimpleCV import *
-import py_gmailer
+import Email
 
 #initialize the camer
 cam = Camera()
