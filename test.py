@@ -64,7 +64,7 @@ while True:
 			if files:
 				firstfile = sorted(files)[0]
 				img_mailer = os.path.join(root, firstfile)
-				py_gmailer.gmail(img_mailer)
+				Email.gmail(img_mailer)
 			#move any files in the pic directory to the backup directory
 			for file_ in files:
 				src_file = os.path.join(root, file_)
