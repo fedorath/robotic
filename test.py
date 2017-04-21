@@ -81,7 +81,7 @@ while True:
 			for b in blobs:
 				try:
 					loc = (b.x,b.y) #locates center of object
-					original.drawCircle(loc,b.radius(),Color.RED,2)
+					original.drawCircle(loc,b.radius(),Color.GREEN,2)
 				except:
 					e = sys.exc_info()[0]
 		#use the current date to create a unique file name
