@@ -1,11 +1,3 @@
-'''THIS IS A MOTION DETECTING PROGRAM FOR THE RASPBERRY PI
-It is part of a tutorial series that you can find here:
-https://www.youtube.com/playlist?list=PLlg8lN4r9qWiDzF13lJY-lGtiTFHHGcpx
-Running this program requires installing SimpleCV as well as
-a few other prerequisits on your pi. You can find detailed
-instructions for how to do that here:
-http://tinkernut.com/YtQH9
-'''
 
 #!/usr/bin/python
 
