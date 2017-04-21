@@ -19,7 +19,7 @@ def gmail(png_file):
 	msg['Subject'] = 'Important Message!'
 	msg['From'] = FROM
 	msg['To'] = ', '.join(TO)
-	body = MIMEText('Intruder has been loacated!', 'plain')
+	body = MIMEText('Intruder has been located!', 'plain')
 	msg.attach(body)
 
 	#open up an image file and attach it to the message
