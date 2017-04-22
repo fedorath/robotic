@@ -1,3 +1,4 @@
+import os
 
 from SimpleCV import *
 # import shutil
@@ -8,19 +9,20 @@ from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def email(png_file):
+def email(Gmail):
 
+	img_data = open(Gmail, 'rb').read()
         msg = MIMEMultipart('mixed')
         msg['Subject'] = 'Important Message!'
         msg['From'] = 'kurtax.h1@googlemail.com'
         msg['Reply-to'] = ', '.join('kurtax.h1@googlemail.com')
-        body = MIMEText('Intruder has been located!', 'plain')
-        msg.attach(body)
+        text = MIMEText("Intruder has been spotted!")
+        msg.attach(text)
 
     # open up an image file and attach it to the message
 
-        img_data = open(png_file, 'rb')
-        image = MIMEImage(img_data.read())
+        
+        image = MIMEImage(img_data, name=os.path.basename(ImgFileName))
         img_data.close()
         msg.attach(image)
 
@@ -32,7 +34,7 @@ def email(png_file):
         server.ehlo
         server.login('kurtax.h1@googlemail.com', 'kurtax%1')
         server.sendmail('kurtax.h1@googlemail.com','kurtax.h1@googlemail.com', msg.as_string())
-        server.close()
+        server.quit()
 
 #initialize the camer
 IMG = Camera()
