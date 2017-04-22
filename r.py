@@ -8,7 +8,7 @@ from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def mailer(png_file):
+def email(png_file):
 
         msg = MIMEMultipart('mixed')
         msg['Subject'] = 'Important Message!'
@@ -89,7 +89,8 @@ while True:
 			if files:
 				firstfile = sorted(files)[0]
 				mailer = os.path.join(root, firstfile)
-			#move any files in the pic directory to the backup directory
+				email(mailer)
+				#move any files in the pic directory to the backup directory
 			for file_ in files:
 				src_file = os.path.join(root, file_)
 				dst_file = os.path.join(dst_root, file_)
