@@ -6,6 +6,7 @@
 
 #Multiple imports
 import os
+import time
 from SimpleCV import *
 import shutil
 import smtplib
@@ -41,6 +42,7 @@ def email(Gmail):
 ##########################################################################################################
 #					SimpleCV Object detection.				         #
 ##########################################################################################################
+Time = 10
 
 IMG = Camera()#Camera is intiated.
 
@@ -48,10 +50,9 @@ width = 640
 height = 480
 
 #create a threshold variable to change  motion sensitivity
-threshold = 5.0
 
 #set timer variables for email loop
-Time = time.time(10)
+Stime = time.time()
 
 
 #create destination & backup directories for the pictures
@@ -67,7 +68,7 @@ if not os.path.exists("pic_bkp"):
 #create a loop that constantly grabs new images from the webcam
 while True:
         #set a time variable that updates with the loop
-        current_time = time.time()
+        settime = time.time()
         #grab an image still from the camera and convert it to grayscale
         img01 = IMG.getImage().toGray()
         #wait half a second
@@ -89,7 +90,8 @@ while True:
         #check to see if the wait time has been passed
 	#if current_time >= (start_time + wait_time):
 		#if it has, reset the start time
-	if Time = time.time():
+
+	if settime >= (Stime + Time):
 		#scan the picture directory for files
 		for root, dirs, files in os.walk(dst):
 			dst_root = root.replace(dst, bkp)
