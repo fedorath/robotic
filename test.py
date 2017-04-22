@@ -9,7 +9,7 @@ import shutil
 #initialize the camer
 cam = Camera()
 #set the max display size
-display = Display((800,600))
+display = Display((400,400))
 
 #create a threshold variable to change  motion sensitivity
 threshold = 5.0
