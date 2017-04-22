@@ -89,7 +89,7 @@ while True:
         #check to see if the wait time has been passed
 	#if current_time >= (start_time + wait_time):
 		#if it has, reset the start time
-	if Time = time.time()
+	if Time = time.time():
 		#scan the picture directory for files
 		for root, dirs, files in os.walk(dst):
 			dst_root = root.replace(dst, bkp)
