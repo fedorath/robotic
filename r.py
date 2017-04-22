@@ -88,10 +88,12 @@ while True:#While loop which grabs images until it is told to stop.
 
 		for root, dirs, files in os.walk(path):
 			for file in files:
-				firstfile = sorted(files)[0]
-				mailer = os.path.join(root, firstfile)
+				Sortfile = sorted(files)[0]
+				mailer = os.path.join(root, Sortfile)
 				email(mailer)
 
+				
+				
 	if mean >= threshold:
 
 
