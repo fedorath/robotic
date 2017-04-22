@@ -23,18 +23,17 @@ def email(Gmail):
 
         
         image = MIMEImage(img_data, name=os.path.basename(Gmail))
-        img_data.close()
         msg.attach(image)
 
     # open up the SMTP server, start a tls connection, login, send, and close
 
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.ehlo()
-        server.starttls()
-        server.ehlo
-        server.login('kurtax.h1@googlemail.com', 'kurtax%1')
-        server.sendmail('kurtax.h1@googlemail.com','kurtax.h1@googlemail.com', msg.as_string())
-        server.close()
+        s = smtplib.SMTP('smtp.gmail.com', 587)
+        s.ehlo()
+        s.starttls()
+        s.ehlo
+        s.login('kurtax.h1@googlemail.com', 'kurtax%1')
+        s.sendmail('kurtax.h1@googlemail.com','kurtax.h1@googlemail.com', msg.as_string())
+        s.close()
 
 #initialize the camer
 IMG = Camera()
