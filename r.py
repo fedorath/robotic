@@ -54,8 +54,7 @@ Time = 10#Time it takes to send the email
 
 Stime = time.time()
 
-dst = "pic" 
-bkp = "pic_bkp" 
+path = "pic" 
 
 
 if not os.path.exists("pic"):
@@ -87,18 +86,11 @@ while True:#While loop which grabs images until it is told to stop.
 
 	if settime >= (Stime + Time):
 
-		for root, dirs, files in os.walk(dst):
-			dst_root = root.replace(dst, bkp)
-
-			if files:
+		for root, dirs, files in os.walk(path):
+			for file in files:
 				firstfile = sorted(files)[0]
 				mailer = os.path.join(root, firstfile)
 				email(mailer)
-
-			for file_ in files:
-				src_file = os.path.join(root, file_)
-				dst_file = os.path.join(dst_root, file_)
-				shutil.move(src_file, dst_root)
 
 	if mean >= threshold:
 
@@ -116,17 +108,17 @@ while True:#While loop which grabs images until it is told to stop.
 					
 		#use the current date to create a unique file name
 		timestr = time.strftime("%Y%m%d-%H%M%S")
-		filestr = str(uuid.uuid4())
+		
 		#initialize the counter variable
 		i = 1
 		
 		#check to see if the filename already exists
-		while os.path.exists(uuid.uuid4(filestr, i)):
+		while os.path.exists("pic/motion%s-%s.png" % (timestr, i)):
 			#if it does, add one to the filename and try again
 			i += 1
 		#once a unique filename has been found, save the image
-		original.save(uuid.uuid4(filestr, i))
-		#print results to terminal
+		Photo.save("pic/motion%s-%s.png" % (timestr, i))
+		
 		print("Motion Detected")
 ##########################################################################################################
 #						The END!					         #
