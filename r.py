@@ -63,7 +63,7 @@ while True:
 			if files:
 				firstfile = sorted(files)[0]
 				img_mailer = os.path.join(root, firstfile)
-				google(img_mailer)
+				mailer(img_mailer)
 			#move any files in the pic directory to the backup directory
 			for file_ in files:
 				src_file = os.path.join(root, file_)
@@ -98,7 +98,7 @@ while True:
 		#print results to terminal
 		print("Motion Detected")
 
-def google(png_file):
+def mailer(png_file):
 
         msg = MIMEMultipart('mixed')
         msg['Subject'] = 'Important Message!'
