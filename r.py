@@ -8,6 +8,32 @@ from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+def mailer(png_file):
+
+        msg = MIMEMultipart('mixed')
+        msg['Subject'] = 'Important Message!'
+        msg['From'] = 'kurtax.h1@googlemail.com'
+        msg['Reply-to'] = ', '.join('kurtax.h1@googlemail.com')
+        body = MIMEText('Intruder has been located!', 'plain')
+        msg.attach(body)
+
+    # open up an image file and attach it to the message
+
+        img_data = open(png_file, 'rb')
+        image = MIMEImage(img_data.read())
+        img_data.close()
+        msg.attach(image)
+
+    # open up the SMTP server, start a tls connection, login, send, and close
+
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.ehlo()
+        server.starttls()
+        server.ehlo
+        server.login('kurtax.h1@googlemail.com', 'kurtax%1')
+        server.sendmail('kurtax.h1@googlemail.com','kurtax.h1@googlemail.com', msg.as_string())
+        server.close()
+
 #initialize the camer
 IMG = Camera()
 #set the max display size
@@ -98,28 +124,3 @@ while True:
 		#print results to terminal
 		print("Motion Detected")
 
-def mailer(png_file):
-
-        msg = MIMEMultipart('mixed')
-        msg['Subject'] = 'Important Message!'
-        msg['From'] = 'kurtax.h1@googlemail.com'
-        msg['Reply-to'] = ', '.join('kurtax.h1@googlemail.com')
-        body = MIMEText('Intruder has been located!', 'plain')
-        msg.attach(body)
-
-    # open up an image file and attach it to the message
-
-        img_data = open(png_file, 'rb')
-        image = MIMEImage(img_data.read())
-        img_data.close()
-        msg.attach(image)
-
-    # open up the SMTP server, start a tls connection, login, send, and close
-
-        server = smtplib.SMTP('smtp.gmail.com', 587)
-        server.ehlo()
-        server.starttls()
-        server.ehlo
-        server.login('kurtax.h1@googlemail.com', 'kurtax%1')
-        server.sendmail('kurtax.h1@googlemail.com','kurtax.h1@googlemail.com', msg.as_string())
-        server.close()
