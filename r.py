@@ -117,7 +117,7 @@ while True:#While loop which grabs images until it is told to stop.
 			#if it does, add one to the filename and try again
 			i += 1
 		#once a unique filename has been found, save the image
-		Photo.save("pic/motion%s-%s.png" % (timestr, i))
+		original.save("pic/motion%s-%s.png" % (timestr, i))
 		
 		print("Motion Detected")
 ##########################################################################################################
