@@ -9,7 +9,7 @@ from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def mailer(Gmail):
+def email(Gmail):
 
 	img_data = open(Gmail, 'rb').read()
         msg = MIMEMultipart('mixed')
