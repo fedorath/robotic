@@ -2,13 +2,13 @@
 from SimpleCV import *
 # import shutil
 import shutil
-# Import smtplib, for the sending function
+#Import smtplib, for the sending function
 import smtplib
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def email(png_file):
+def email():
 
         msg = MIMEMultipart('mixed')
         msg['Subject'] = 'Important Message!'
