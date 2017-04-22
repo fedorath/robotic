@@ -48,7 +48,7 @@ IMG = Camera()#Camera is intiated.
 
 width = 640
 height = 480
-
+threshold = 10
 #create a threshold variable to change  motion sensitivity
 
 #set timer variables for email loop
