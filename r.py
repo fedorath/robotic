@@ -44,7 +44,7 @@ threshold = 5.0
 
 #set timer variables for email loop
 start_time = time.time()
-wait_time = 60 #in seconds
+wait_time = 10 #in seconds
 
 #create destination & backup directories for the pictures
 dst = "pic" #destination directory for images
