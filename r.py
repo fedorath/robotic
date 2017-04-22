@@ -8,7 +8,7 @@ from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-def email():
+def email(png_file):
 
         msg = MIMEMultipart('mixed')
         msg['Subject'] = 'Important Message!'
