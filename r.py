@@ -22,7 +22,7 @@ def email(Gmail):
     # open up an image file and attach it to the message
 
         
-        image = MIMEImage(img_data, name=os.path.basename(ImgFileName))
+        image = MIMEImage(img_data, name=os.path.basename(Gmail))
         img_data.close()
         msg.attach(image)
 
