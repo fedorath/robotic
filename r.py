@@ -9,6 +9,7 @@ import os
 from SimpleCV import *
 import shutil
 import smtplib
+import numpy as np
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -50,8 +51,8 @@ height = 480
 threshold = 5.0
 
 #set timer variables for email loop
-start_time = time.time()
-wait_time = 10 #in seconds
+Time = time.time(10)
+
 
 #create destination & backup directories for the pictures
 dst = "pic" #destination directory for images
@@ -86,7 +87,7 @@ while True:
 	blobs = diff.findBlobs()
 
         #check to see if the wait time has been passed
-	if current_time >= (start_time + wait_time):
+	#if current_time >= (start_time + wait_time):
 		#if it has, reset the start time
 		start_time = time.time()
 		#scan the picture directory for files
