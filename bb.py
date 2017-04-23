@@ -16,7 +16,7 @@ GPIO.output(26,0)
 GPIO.output(24,0)
 GPIO.output(19,0)
 GPIO.output(21,0)
-speed = 10
+speed = 1
 flag=0
 while True:
 	j=GPIO.input(13)
