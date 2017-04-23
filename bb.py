@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+from extra_tools.Adafruit_PWM_Servo_Driver import PWM
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.IN) #Right IR sensor module
@@ -10,6 +11,8 @@ GPIO.setup(26,GPIO.OUT) #Left motor control
 GPIO.setup(24,GPIO.OUT) #Left motor control
 GPIO.setup(19,GPIO.OUT) #Right motor control
 GPIO.setup(21,GPIO.OUT) #Right motor control
+
+speed = 40
 
 pwm = PWM(0x40, debug = False)
         pwm.setPWMFreq(60)
