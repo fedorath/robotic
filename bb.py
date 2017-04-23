@@ -11,6 +11,26 @@ GPIO.setup(24,GPIO.OUT) #Left motor control
 GPIO.setup(19,GPIO.OUT) #Right motor control
 GPIO.setup(21,GPIO.OUT) #Right motor control
 
+pwm = PWM(0x40, debug = False)
+        pwm.setPWMFreq(60)
+ #use pwm on inputs so motors don't go too fast
+GPIO.setup(26, GPIO.OUT)
+p = GPIO.PWM(26, 20)
+p.start(0)
+
+GPIO.setup(24, GPIO.OUT)
+q = GPIO.PWM(24, 20)
+q.start(0)
+
+GPIO.setup(19, GPIO.OUT)
+a = GPIO.PWM(19, 20)
+a.start(0)
+
+GPIO.setup(21, GPIO.OUT)
+b = GPIO.PWM(21, 20)
+b.start(0)
+
+
 #Motor stop/brake
 GPIO.output(26,0) 
 GPIO.output(24,0)
@@ -30,60 +50,66 @@ while True:
 		if i==0: #Obstacle detected on right IR sensor
 			print "Obstacle detected on Right",i 
 			#Move in reverse direction
-			GPIO.output(24,speed) #Left motor turns anticlockwise
-			GPIO.output(26,0)  
-			GPIO.output(19,speed) #Right motor turns clockwise
-			GPIO.output(21,0)		
-			time.sleep(1)
+    			p.ChangeDutyCycle(0)
+    			q.ChangeDutyCycle(speed)
+    			a.ChangeDutyCycle(0)
+    			b.ChangeDutyCycle(speed)
+    			q.ChangeFrequency(speed + 5)
+    			b.ChangeFrequency(speed + 5)
 
 			#Turn robot left
-			GPIO.output(24,0) #Left motor turns clockwise
-			GPIO.output(26,speed)
-			GPIO.output(19,speed) #Right motor turns clockwise
-			GPIO.output(21,0)
-			time.sleep(2)
+    			p.ChangeDutyCycle(0)
+    			q.ChangeDutyCycle(speed)
+    			a.ChangeDutyCycle(speed)
+    			b.ChangeDutyCycle(0)
+    			q.ChangeFrequency(speed + 5)
+    			a.ChangeFrequency(speed + 5)
 		if k==0: #Obstacle detected on left IR sensor
 			print "Obstacle detected on Left",k
-			GPIO.output(24,speed)
-			GPIO.output(26,0)
-			GPIO.output(19,speed)
-			GPIO.output(21,0)		
-			time.sleep(1)
-
-			GPIO.output(24,speed)
-			GPIO.output(26,0)
-			GPIO.output(19,0)
-			GPIO.output(21,speed)
-			time.sleep(2)
+    			p.ChangeDutyCycle(0)
+    			q.ChangeDutyCycle(speed)
+    			a.ChangeDutyCycle(0)
+    			b.ChangeDutyCycle(speed)
+    			q.ChangeFrequency(speed + 5)
+    			b.ChangeFrequency(speed + 5)
+			
+    			p.ChangeDutyCycle(speed)
+    			q.ChangeDutyCycle(0)
+    			a.ChangeDutyCycle(0)
+    			b.ChangeDutyCycle(speed)
+    			p.ChangeFrequency(speed + 5)
+    			b.ChangeFrequency(speed + 5)
 
 		elif i==0 and k==0:
 			print "Obstacles on both sides"
-			GPIO.output(24,speed)
-			GPIO.output(26,0)
-			GPIO.output(19,speed)
-			GPIO.output(21,0)		
-			time.sleep(2)
+    			p.ChangeDutyCycle(0)
+    			q.ChangeDutyCycle(speed)
+    			a.ChangeDutyCycle(0)
+    			b.ChangeDutyCycle(speed)
+    			q.ChangeFrequency(speed + 5)
+    			b.ChangeFrequency(speed + 5)
 
-			GPIO.output(24,speed)
-			GPIO.output(26,0)
-			GPIO.output(19,0)
-			GPIO.output(21,speed)
-			time.sleep(4)
+    			p.ChangeDutyCycle(speed)
+    			q.ChangeDutyCycle(0)
+    			a.ChangeDutyCycle(0)
+    			b.ChangeDutyCycle(speed)
+    			p.ChangeFrequency(speed + 5)
+    			b.ChangeFrequency(speed + 5)
 			
 		elif i==1 and k==1:	#No obstacles, robot moves forward
 			print "No obstacles",i
 			#Robot moves forward
-			GPIO.output(24,0)
-			GPIO.output(26,speed)
-			GPIO.output(19,0)
-			GPIO.output(21,speed)
-			time.sleep(0.5)
+    			p.ChangeDutyCycle(speed)
+    			q.ChangeDutyCycle(0)
+    			a.ChangeDutyCycle(speed)
+    			b.ChangeDutyCycle(0)
+   			p.ChangeFrequency(speed + 5)
+    			a.ChangeFrequency(speed + 5)
 		j=GPIO.input(13)
 		if j==1: #De activate robot on pushin the button
 			flag=0
 			print "Robot De-Activated",j
-			GPIO.output(24,0)
-			GPIO.output(26,0)
-			GPIO.output(19,0)
-			GPIO.output(21,0)
-			time.sleep(1)
+    			p.ChangeDutyCycle(0)
+    			q.ChangeDutyCycle(0)
+    			a.ChangeDutyCycle(0)
+    			b.ChangeDutyCycle(0)
