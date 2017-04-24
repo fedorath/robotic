@@ -94,10 +94,10 @@ while True:#While loop which grabs images until it is told to stop.
 
 		if blobs:
 
-			for b in blobs:
+			for blob in blobs:
 				try:
-					loc = (b.x,b.y) 
-					original.drawCircle(loc,b.radius(),Color.RED,2)
+					loc = (blob.x,blob.y) 
+					original.drawCircle(loc,blob.radius(),Color.GREEN,2)
 				except:
 					e = sys.exc_info()[0]
 					
