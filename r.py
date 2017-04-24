@@ -57,7 +57,7 @@ Stime = time.time()
 directory = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
-
+########################################################################################################
 	
 while True:#While loop which grabs images until it is told to stop.
 
@@ -76,7 +76,7 @@ while True:#While loop which grabs images until it is told to stop.
 
         matrix = d.getNumpy()
         avg = matrix.mean()
-
+####################################################################################################
 
 	blobs = d.findBlobs()
 
@@ -103,21 +103,15 @@ while True:#While loop which grabs images until it is told to stop.
 					e = sys.exc_info()[0]
 					
 					
-					
-		#use the current date to create a unique file name
-		name = datetime.now().strftime('%Y-%m-%d')
-		
-		#initialize the counter variable
+#########################################################################################################
+		name = datetime.now().strftime('%Y-%m-%d') # filename is set using date and time
 		i = 1
 		
-		#check to see if the filename already exists
 		while os.path.exists("Photo/Intruder%s-%s.png" % (name, i)):
-			#if it does, add one to the filename and try again
 			i += 1
-		#once a unique filename has been found, save the image
-		original.save("Photo/Intruder%s-%s.png" % (name, i))
+		original.save("Photo/Intruder%s-%s.png" % (name, i))#saves photo with name
 		
-		print("Motion Detected")
+		print("Motion Detected")#prints into terminal
 ##########################################################################################################
 #						The END!					         #
 ##########################################################################################################
