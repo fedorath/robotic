@@ -53,7 +53,7 @@ threshold = 5.0#Threshold set to
 
 
 Stime = time.time()
-Time = 30#Time it takes to send the email
+int Time = 30#Time it takes to send the email
 path = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
