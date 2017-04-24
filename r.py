@@ -42,7 +42,7 @@ def email(Gmail):
 ##########################################################################################################
 #					SimpleCV Object detection.				         #
 ##########################################################################################################
-fmt = "%e %b %Y %H:%M:%S%p"#Date,Month,Year,Hour,Minute,Seconds
+fmt = "%Y-%m-%d %H-%M-%S"#Date,Month,Year,Hour,Minute,Seconds
 Time = 10
 Stime = time.time()
 IMG = Camera()#Camera is intiated.
