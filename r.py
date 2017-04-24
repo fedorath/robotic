@@ -61,7 +61,7 @@ if not os.path.exists("Photo"):
 
 while True:#While loop which grabs images until it is told to stop.
 
-        settime = time.time()
+        settime = Time.time()
 
         Photo1 = IMG.getImage().toGray()
 	
@@ -79,7 +79,7 @@ while True:#While loop which grabs images until it is told to stop.
 	blobs = diff.findBlobs()
 
 	if settime >= (Stime + Time):
-
+		Stime = Time.time()
 		for root, dirs, files in os.walk(path):#checks the folder for images
 			for file in files:#finds the image
 				Sortfile = sorted(files)[0]
