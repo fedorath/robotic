@@ -12,6 +12,7 @@ import shutil
 import smtplib
 import numpy as np
 import uuid
+from datetime import datetime
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -53,7 +54,7 @@ Time = 10#Time it takes to send the email
 
 Stime = time.time()
 
-path = "Photo" #Directory 
+directory = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
 
@@ -81,7 +82,7 @@ while True:#While loop which grabs images until it is told to stop.
 
 	if settime >= (Stime + Time):
 
-		for root, dirs, files in os.walk(path):#checks the folder for images
+		for root, dirs, files in os.walk(directory):#checks the folder for images
 			for file in files:#finds the image
 				Sortfile = sorted(files)[0]
 				mailer = os.path.join(root, Sortfile)
@@ -104,7 +105,7 @@ while True:#While loop which grabs images until it is told to stop.
 					
 					
 		#use the current date to create a unique file name
-		timestr = time.strftime("%Y%m%d-%H%M%S")
+		Photo = datetime.datetime.now().strftime("%x")
 		
 		#initialize the counter variable
 		i = 1
