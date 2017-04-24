@@ -42,7 +42,7 @@ def email(Gmail):
 ##########################################################################################################
 #					SimpleCV Object detection.				         #
 ##########################################################################################################
-fmt = "%Y-%m-%d %H-%M-%S"#Date,Month,Year,Hour,Minute,Seconds
+#fmt = "%Y-%m-%d %H-%M-%S"#Date,Month,Year,Hour,Minute,Seconds
 Time = 10
 Stime = time.time()
 IMG = Camera()#Camera is intiated.
@@ -83,7 +83,7 @@ while True:#While loop which grabs images until it is told to stop.
 #########################################################################################################
 
 
-		name = datetime.now().strftime(fmt) # filename is set using date and time
+		name = datetime.now().strftime("%Y-%m-%d %H-%M-%S") # filename is set using date and time
 		i = 1
 		
 		while os.path.exists("Photo/Intruder%s-%s.png" % (name, i)):
