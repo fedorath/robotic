@@ -49,7 +49,7 @@ IMG = Camera()#Camera is intiated.
 
 width = 640
 height = 480
-threshold = 10#Threshold set to 
+threshold = 5.0#Threshold set to 
 
 
 Stime = time.time()
