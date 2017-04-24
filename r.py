@@ -13,9 +13,6 @@ from datetime import datetime
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-fmt = "%e %b %Y %H:%M:%S%p"#Date,Month,Year,Hour,Minute,Seconds
-Time = 10
-Stime = time.time()
 
 
 ##########################################################################################################
@@ -45,8 +42,9 @@ def email(Gmail):
 ##########################################################################################################
 #					SimpleCV Object detection.				         #
 ##########################################################################################################
-
-
+fmt = "%e %b %Y %H:%M:%S%p"#Date,Month,Year,Hour,Minute,Seconds
+Time = 10
+Stime = time.time()
 IMG = Camera()#Camera is intiated.
 width = 640
 height = 480
