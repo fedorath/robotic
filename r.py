@@ -63,15 +63,15 @@ while True:#While loop which grabs images until it is told to stop.
 
         settime = time.time()
 
-        img01 = IMG.getImage().toGray()
+        PH1 = IMG.getImage().toGray()
 
         time.sleep(0.5)
 
-	original = IMG.getImage()
+	PH = IMG.getImage()
 
-        img02 = IMG.getImage().toGray()
+        PH2 = IMG.getImage().toGray()
 
-        diff = (img01 - img02).binarize(50).invert()
+        diff = (PH1 - PH2).binarize(50).invert()
 
 
         matrix = diff.getNumpy()
@@ -115,7 +115,7 @@ while True:#While loop which grabs images until it is told to stop.
 			#if it does, add one to the filename and try again
 			i += 1
 		#once a unique filename has been found, save the image
-		original.save("Photo/motion%s-%s.png" % (timestr, i))
+		PH.save("Photo/motion%s-%s.png" % (timestr, i))
 		
 		print("Motion Detected")
 ##########################################################################################################
