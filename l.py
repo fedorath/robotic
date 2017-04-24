@@ -56,7 +56,7 @@ Stime = time.time()
 path = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
-
+fmt = "%Y-%m-%d %H-%M-%S"
 	
 while True:#While loop which grabs images until it is told to stop.
 
@@ -93,7 +93,12 @@ while True:#While loop which grabs images until it is told to stop.
 					e = sys.exc_info()[0]
 					
 		#use the current date to create a unique file name
-		timestr = time.strftime("%Y%m%d-%H%M%S")
+
+		name = datetime.now().strftime(fmt)
+		thisDestDir = destDir + '/%04d/%02d' % (yr, mo)
+		if not os.path.exists(thisDestDir):
+			os.makedirs(thisDestDir)
+		
 		
 		#initialize the counter variable
 		i = 1
