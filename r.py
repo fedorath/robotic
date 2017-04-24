@@ -64,13 +64,14 @@ while True:#While loop which grabs images until it is told to stop.
         settime = time.time()
 
         PIC1 = IMG.getImage().toGray().binarize(50)
-
+	PIC1 = IMG.binarize(50)
         time.sleep(0.5)
 
 	original = IMG.getImage()
 
-        PIC2 = IMG.getImage().toGray().binarize(50)
-
+        PIC2 = IMG.getImage().toGray()
+	PIC2 = IMG.binarize(50)
+	
         d = (PIC1 - PIC2).invert()
 
 
