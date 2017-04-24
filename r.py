@@ -49,7 +49,6 @@ IMG = Camera()#Camera is intiated.
 
 width = 640
 height = 480
-threshold = 10#Threshold set to 
 Time = 10#Time it takes to send the email
 
 Stime = time.time()
@@ -71,14 +70,14 @@ while True:#While loop which grabs images until it is told to stop.
 
         PH02 = IMG.getImage().toGray()
 
-        diff = (PH01 - PH02).binarize(50).invert()
+        d = (PH01 - PH02).binarize(50).invert()
 
 
-        matrix = diff.getNumpy()
-        mean = matrix.mean()
+        matrix = d.getNumpy()
+        avg = matrix.mean()
 
 
-	blobs = diff.findBlobs()
+	blobs = d.findBlobs()
 
 	if settime >= (Stime + Time):
 
@@ -90,7 +89,7 @@ while True:#While loop which grabs images until it is told to stop.
 
 				
 				
-	if mean >= threshold:
+	if avg >= 10:
 
 
 		if blobs:
