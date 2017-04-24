@@ -58,7 +58,7 @@ if not os.path.exists("Photo"):
 ########################################################################################################
 	
 while True:#While loop which grabs images until it is told to stop.
-	
+        settime = time.time()	
         PIC1 = IMG.getImage().toGray()
 
         time.sleep(0.5)
@@ -68,12 +68,8 @@ while True:#While loop which grabs images until it is told to stop.
         PIC2 = IMG.getImage().toGray()
 	
         d = (PIC1 - PIC2).binarize().invert()
-
-
         matrix = d.getNumpy()
         avg = matrix.mean()
-######################################################################################################
-
 	blobs = d.findBlobs()
 				
 	if avg >= 10: #average mean greater equal to 10
