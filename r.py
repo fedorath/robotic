@@ -42,8 +42,6 @@ def email(Gmail):
 #					SimpleCV Object detection.				         #
 ##########################################################################################################
 fmt = "%Y-%m-%d %H-%M-%S"#Date,Month,Year,Hour,Minute,Seconds
-Time = 10
-Stime = time.time()
 IMG = Camera()#Camera is intiated.
 width = 640
 height = 480
@@ -53,15 +51,11 @@ if not os.path.exists("Photo"):#checks if exists
 
 	
 while True:#While loop which grabs images until it is told to stop.
-	
-        settime = time.time()	
-	
+		
         PIC1 = IMG.getImage().toGray()
-	time.sleep(0.5)
 	PIC = IMG.getImage()
-	time.sleep(0.5)
         PIC2 = IMG.getImage().toGray()
-	
+	time.sleep(1)
         d = (PIC1 - PIC2).binarize().invert()
         matrix = d.getNumpy()
         avg = matrix.mean()
@@ -93,8 +87,6 @@ while True:#While loop which grabs images until it is told to stop.
 		print ("Intruder Image Stored!")
 		
 		
-	if settime >= (Stime + Time):
-
 		for root, dirs, files in os.walk(directory, topdown=False):#checks the folder for images
 			for file in files:#finds the image
 				Sortfile = sorted(files)[0]
