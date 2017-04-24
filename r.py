@@ -4,16 +4,16 @@
 ##########################################################################################################
 ##########################################################################################################
 
-#Multiple imports
 import os
 import time
 from SimpleCV import *
+import shutil
 import smtplib
-from datetime import datetime
+import numpy as np
+import uuid
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
 
 ##########################################################################################################
 #				Sending Attached PNG files to recipient.			         #
