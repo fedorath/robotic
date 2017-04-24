@@ -16,7 +16,7 @@ from email.mime.multipart import MIMEMultipart
 
 Time = 10
 Stime = time.time()
-fmt = "%Y-%m-%d %H-%M-%S"
+fmt = "%e %b %Y %H:%M:%S%p"#Date,Month,Year,Hour,Minute,Seconds
 
 ##########################################################################################################
 #				Sending Attached PNG files to recipient.			         #
@@ -50,12 +50,13 @@ def email(Gmail):
 IMG = Camera()#Camera is intiated.
 width = 640
 height = 480
-directory = "Photo" #Directory 
-if not os.path.exists("Photo"):
-	os.makedirs("Photo")
+directory = "Photo" #Directory name photo
+if not os.path.exists("Photo"):#checks if exists
+	os.makedirs("Photo")#makes directory
 ########################################################################################################
 	
 while True:#While loop which grabs images until it is told to stop.
+	
         settime = time.time()	
 	
         PIC1 = IMG.getImage().toGray()
@@ -91,7 +92,8 @@ while True:#While loop which grabs images until it is told to stop.
 			i += 1
 		PIC.save("Photo/Intruder%s-%s.png" % (name, i))#saves photo with name
 		
-		print("Motion Detected")#prints into terminal	
+		print("Motion Detected")#prints into terminal
+		print "Processing %s..." % PIC
 	if settime >= (Stime + Time):
 
 		for root, dirs, files in os.walk(directory):#checks the folder for images
