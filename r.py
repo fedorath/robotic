@@ -4,6 +4,7 @@
 ##########################################################################################################
 ##########################################################################################################
 
+#Multiple imports
 import os
 import time
 from SimpleCV import *
@@ -91,7 +92,8 @@ while True:#While loop which grabs images until it is told to stop.
 		PIC.save("Photo/Intruder%s-%s.png" % (name, i))#saves photo with name
 		
 		print("Motion Detected")#prints into terminal
-		#print ("Processing %s...") 
+		print ("Processing %s...") 
+		
 	if settime >= (Stime + Time):
 
 		for root, dirs, files in os.walk(directory):#checks the folder for images
