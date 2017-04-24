@@ -66,7 +66,7 @@ while True:#While loop which grabs images until it is told to stop.
         Photo1 = IMG.getImage().toGray()
 	
  	Photo1 = Photo1.binarize(50)
-	
+	Photo1 = Photo1.invert()
         time.sleep(0.5)
 
 	Photo = IMG.getImage()
@@ -74,8 +74,8 @@ while True:#While loop which grabs images until it is told to stop.
         Photo2 = IMG.getImage().toGray()
 	
 	Photo2 = Photo2.binarize(50)
-	
-        diff = (Photo1 - Photo2).invert()
+	Photo2 = Photo2.invert()
+        diff = (Photo1 - Photo2)
 
         matrix = diff.getNumpy()
         mean = matrix.mean()
