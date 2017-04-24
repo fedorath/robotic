@@ -105,7 +105,7 @@ while True:#While loop which grabs images until it is told to stop.
 					
 					
 		#use the current date to create a unique file name
-		timestr = time.datetime.now().strftime('%Y-%m-%d')
+		Photo = 'Photo/myfile-%s.txt'%datetime.now().strftime('%Y-%m-%d')
 		
 		#initialize the counter variable
 		i = 1
