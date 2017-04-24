@@ -90,14 +90,12 @@ while True:#While loop which grabs images until it is told to stop.
 
 				
 				
-	if avg >= 10:
-
-
+	if avg >= 10: #average mean greater equal to 10
 		if blobs:
 
 			for blob in blobs:
-				try:
-					original.drawCircle(blob.x,blob.y,blob.radius(),SimpleCV.Color.GREEN,3)
+				try: #Draws green circles around the detected objects
+					original.drawCircle((blob.x,blob.y),blob.radius(),SimpleCV.Color.GREEN,3)
 				except:
 					e = sys.exc_info()[0]
 					
