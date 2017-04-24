@@ -63,15 +63,15 @@ while True:#While loop which grabs images until it is told to stop.
 
         settime = time.time()
 
-        PH1 = IMG.getImage().toGray()
+        PH01 = IMG.getImage().toGray()
 
         time.sleep(0.5)
 
 	PH = IMG.getImage()
 
-        PH2 = IMG.getImage().toGray()
+        PH02 = IMG.getImage().toGray()
 
-        diff = (PH1 - PH2).binarize(50).invert()
+        diff = (PH01 - PH02).binarize(50).invert()
 
 
         matrix = diff.getNumpy()
