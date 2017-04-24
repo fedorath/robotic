@@ -71,7 +71,7 @@ while True:#While loop which grabs images until it is told to stop.
 
         PIC2 = IMG.getImage().toGray()
 	
-        d = (PIC1 - PIC2).binarize(90).invert()
+        d = (PIC1 - PIC2).binarize().invert()
 
 
         matrix = d.getNumpy()
