@@ -64,20 +64,22 @@ while True:#While loop which grabs images until it is told to stop.
         settime = time.time()
 
         img01 = IMG.getImage().toGray()
-
+	
+ 	img01 = binarize(50)
+	
         time.sleep(0.5)
 
 	original = IMG.getImage()
 
         img02 = IMG.getImage().toGray()
-
-        diff = (img01 - img02).binarize(50).invert()
+	
+	img01 = binarize(50)
+	
+        diff = (img01 - img02).invert()
 
 
         matrix = diff.getNumpy()
         mean = matrix.mean()
-
-def simpleb():	
 	
 	blobs = diff.findBlobs()
 
