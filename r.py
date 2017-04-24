@@ -53,7 +53,7 @@ threshold = 5.0#Threshold set to
 
 
 Stime = time.time()
-int Time = 30#Time it takes to send the email
+Time = 30#Time it takes to send the email
 path = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
@@ -79,7 +79,7 @@ while True:#While loop which grabs images until it is told to stop.
 	blobs = diff.findBlobs()
 
 	if settime >= (Stime + Time):
-		Stime = Time.time()
+		Stime = time.time()
 		for root, dirs, files in os.walk(path):#checks the folder for images
 			for file in files:#finds the image
 				Sortfile = sorted(files)[0]
