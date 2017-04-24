@@ -8,14 +8,14 @@
 import os
 import time
 from SimpleCV import *
-import shutil
 import smtplib
-import numpy as np
-import uuid
 from datetime import datetime
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+
+Time = 10
+Stime = time.time()
 
 ##########################################################################################################
 #				Sending Attached PNG files to recipient.			         #
@@ -47,11 +47,8 @@ def email(Gmail):
 
 
 IMG = Camera()#Camera is intiated.
-
 width = 640
 height = 480
-Stime = time.time()
-Time = 10
 directory = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
@@ -59,6 +56,7 @@ if not os.path.exists("Photo"):
 	
 while True:#While loop which grabs images until it is told to stop.
         settime = time.time()	
+	
         PIC1 = IMG.getImage().toGray()
 
         time.sleep(0.5)
@@ -71,7 +69,7 @@ while True:#While loop which grabs images until it is told to stop.
         matrix = d.getNumpy()
         avg = matrix.mean()
 	blobs = d.findBlobs()
-				
+###########################################################################################################				
 	if avg >= 10: #average mean greater equal to 10
 		if blobs:
 
