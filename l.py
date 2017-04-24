@@ -96,8 +96,7 @@ while True:#While loop which grabs images until it is told to stop.
 
 			for b in blobs:
 				try:
-					loc = (b.x,b.y) 
-					original.drawCircle(loc,b.radius(),Color.RED,2)
+					original.drawCircle(blob.x,blob.y,blob.radius(),SimpleCV.Color.GREEN,3)
 				except:
 					e = sys.exc_info()[0]
 					
