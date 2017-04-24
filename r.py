@@ -8,9 +8,7 @@
 import os
 import time
 from SimpleCV import *
-import shutil
 import smtplib
-import numpy as np
 from datetime import datetime as dt
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
@@ -52,7 +50,7 @@ height = 480
 directory = "Photo" #Directory name photo
 if not os.path.exists("Photo"):#checks if exists
 	os.makedirs("Photo")#makes directory
-########################################################################################################
+
 	
 while True:#While loop which grabs images until it is told to stop.
 	
@@ -70,7 +68,7 @@ while True:#While loop which grabs images until it is told to stop.
         matrix = d.getNumpy()
         avg = matrix.mean()
 	blobs = d.findBlobs()
-###########################################################################################################				
+##########################################{Blob}##########################################				
 	if avg >= 10: #average mean greater equal to 10
 		if blobs:
 
@@ -81,18 +79,21 @@ while True:#While loop which grabs images until it is told to stop.
 					e = sys.exc_info()[0]
 					
 					
-#########################################################################################################
+###################################{Names and saves image}###################################################
 
 
 		name = dt.now().strftime(fmt) # filename is set using date and time
 		i = 1
-		
 		while os.path.exists("Photo/Intruder%s-%s.png" % (name, i)):
 			i += 1
 		PIC.save("Photo/Intruder%s-%s.png" % (name, i))#saves photo with name
 		
-		print("Motion Detected")#prints into terminal
+		
+		#prints into terminal
+		print("Motion Detected")
 		print ("Processing %s...") 
+		print ("Image Stored!")
+		
 		
 	if settime >= (Stime + Time):
 
