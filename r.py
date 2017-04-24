@@ -47,8 +47,7 @@ def email(Gmail):
 
 IMG = Camera()#Camera is intiated.
 
-width = 640
-height = 480
+display = SimpleCV.Display()
 threshold = 10#Threshold set to 
 Time = 10#Time it takes to send the email
 
