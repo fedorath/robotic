@@ -58,11 +58,7 @@ while True:#While loop which grabs images until it is told to stop.
 	
         PIC1 = IMG.getImage().toGray()
 
-        time.sleep(1)
-
 	PIC = IMG.getImage()
-
-	time.sleep(2)
 	
         PIC2 = IMG.getImage().toGray()
 	
