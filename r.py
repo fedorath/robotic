@@ -61,7 +61,7 @@ if not os.path.exists("Photo"):
 
 while True:#While loop which grabs images until it is told to stop.
 
-        settime = Time.time()
+        settime = time.time()
 
         Photo1 = IMG.getImage().toGray()
 	
