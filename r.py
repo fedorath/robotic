@@ -105,17 +105,17 @@ while True:#While loop which grabs images until it is told to stop.
 					
 					
 		#use the current date to create a unique file name
-		Photo = 'Photo/myfile-%s.txt'%datetime.now().strftime('%Y-%m-%d')
+		name = datetime.now().strftime('%Y-%m-%d')
 		
 		#initialize the counter variable
 		i = 1
 		
 		#check to see if the filename already exists
-		while os.path.exists("Photo/Intruder%s-%s.png" % (Photo, i)):
+		while os.path.exists("Photo/Intruder%s-%s.png" % (name, i)):
 			#if it does, add one to the filename and try again
 			i += 1
 		#once a unique filename has been found, save the image
-		original.save("Photo/Intruder%s-%s.png" % (Photo, i))
+		original.save("Photo/Intruder%s-%s.png" % (name, i))
 		
 		print("Motion Detected")
 ##########################################################################################################
