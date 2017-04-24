@@ -71,7 +71,7 @@ while True:#While loop which grabs images until it is told to stop.
 
         PIC2 = IMG.getImage().toGray()
 	
-        d = (PIC1 - PIC2).binarize(30).invert()
+        d = (PIC1 - PIC2).binarize().invert()
 
 
         matrix = d.getNumpy()
@@ -95,7 +95,7 @@ while True:#While loop which grabs images until it is told to stop.
 
 			for blob in blobs:
 				try: #Draws green circles around the detected objects
-					original.drawCircle((blob.x,blob.y),blob.radius(),SimpleCV.Color.GREEN,3)
+					PIC.drawCircle((blob.x,blob.y),blob.radius(),SimpleCV.Color.GREEN,3)
 				except:
 					e = sys.exc_info()[0]
 					
