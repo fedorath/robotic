@@ -16,7 +16,7 @@ from email.mime.multipart import MIMEMultipart
 
 Time = 10
 Stime = time.time()
-fmt = "%e %b %Y %H:%M:%S%p"#Date,Month,Year,Hour,Minute,Seconds
+
 
 ##########################################################################################################
 #				Sending Attached PNG files to recipient.			         #
@@ -84,7 +84,7 @@ while True:#While loop which grabs images until it is told to stop.
 					
 #########################################################################################################
 
-
+fmt = "%e %b %Y %H:%M:%S%p"#Date,Month,Year,Hour,Minute,Seconds
 		name = datetime.now().strftime(fmt) # filename is set using date and time
 		i = 1
 		
