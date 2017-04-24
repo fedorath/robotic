@@ -50,8 +50,8 @@ IMG = Camera()#Camera is intiated.
 
 width = 640
 height = 480
-
-
+Stime = time.time()
+Time = 10
 directory = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
