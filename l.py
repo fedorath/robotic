@@ -12,6 +12,7 @@ import shutil
 import smtplib
 import numpy as np
 import uuid
+from datetime import datetime
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -53,10 +54,10 @@ Time = 10#Time it takes to send the email
 
 Stime = time.time()
 
-path = "Photo" #Directory 
+directory = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
-fmt = "%Y-%m-%d %H-%M-%S"
+########################################################################################################
 	
 while True:#While loop which grabs images until it is told to stop.
 
@@ -64,53 +65,50 @@ while True:#While loop which grabs images until it is told to stop.
 
         img01 = IMG.getImage().toGray()
 
+        time.sleep(0.5)
+
 	original = IMG.getImage()
 
         img02 = IMG.getImage().toGray()
 
         d = (img01 - img02).binarize(50).invert()
 
+
         matrix = d.getNumpy()
         avg = matrix.mean()
+####################################################################################################
 
 	blobs = d.findBlobs()
 
 	if settime >= (Stime + Time):
-		
-		for root, dirs, files in os.walk(path):#checks the folder for images
+
+		for root, dirs, files in os.walk(directory):#checks the folder for images
 			for file in files:#finds the image
 				Sortfile = sorted(files)[0]
 				mailer = os.path.join(root, Sortfile)
 				email(mailer)#sends image to email function
-	
-	if avg >= 10:
+
+				
+				
+	if avg >= 10: #average mean greater equal to 10
 		if blobs:
 
 			for blob in blobs:
-				try:
+				try: #Draws green circles around the detected objects
 					original.drawCircle((blob.x,blob.y),blob.radius(),SimpleCV.Color.GREEN,3)
 				except:
 					e = sys.exc_info()[0]
 					
-		#use the current date to create a unique file name
-
-		name = datetime.now().strftime(fmt)
-		thisDestDir = destDir + '/%04d/%02d' % (yr, mo)
-		if not os.path.exists(thisDestDir):
-			os.makedirs(thisDestDir)
-		
-		
-		#initialize the counter variable
+					
+#########################################################################################################
+		name = datetime.now().strftime('%Y-%m-%d') # filename is set using date and time
 		i = 1
 		
-		#check to see if the filename already exists
-		while os.path.exists("Photo/motion%s-%s.png" % (timestr, i)):
-			#if it does, add one to the filename and try again
+		while os.path.exists("Photo/Intruder%s-%s.png" % (name, i)):
 			i += 1
-		#once a unique filename has been found, save the image
-		original.save("Photo/motion%s-%s.png" % (timestr, i))
+		original.save("Photo/Intruder%s-%s.png" % (name, i))#saves photo with name
 		
-		print("Motion Detected")
+		print("Motion Detected")#prints into terminal
 ##########################################################################################################
 #						The END!					         #
 ##########################################################################################################
