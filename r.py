@@ -87,15 +87,15 @@ while True:#While loop which grabs images until it is told to stop.
 		PIC.save("Photo/Intruder%s-%s.png" % (name, i))#saves photo with name
 		
 		
-		#prints into terminal
-		print("Motion Detected")
+		#prints them into terminal
+		print("Initiating Camera!")
 		print ("Processing %s...") 
-		print ("Image Stored!")
+		print ("Intruder Image Stored!")
 		
 		
 	if settime >= (Stime + Time):
 
-		for root, dirs, files in os.walk(directory):#checks the folder for images
+		for root, dirs, files in os.walk(directory, topdown=False):#checks the folder for images
 			for file in files:#finds the image
 				Sortfile = sorted(files)[0]
 				mailer = os.path.join(root, Sortfile)
