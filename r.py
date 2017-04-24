@@ -10,7 +10,7 @@ from SimpleCV import *
 import shutil
 import smtplib
 import numpy as np
-import uuid
+from datetime import datetime as dt
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -83,7 +83,7 @@ while True:#While loop which grabs images until it is told to stop.
 #########################################################################################################
 
 
-		name = datetime.now().strftime(fmt) # filename is set using date and time
+		name = dt.strptime(date_time_string, fmt) # filename is set using date and time
 		i = 1
 		
 		while os.path.exists("Photo/Intruder%s-%s.png" % (name, i)):
