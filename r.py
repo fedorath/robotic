@@ -48,10 +48,12 @@ height = 480
 directory = "Photo" #Directory name photo
 if not os.path.exists("Photo"):#checks if exists
 	os.makedirs("Photo")#makes directory
+Time = 10#Time it takes to send the email
 
+Stime = time.time()
 	
 while True:#While loop which grabs images until it is told to stop.
-		
+	settime = time.time()	
         PIC1 = IMG.getImage().toGray()
 	PIC = IMG.getImage()
         PIC2 = IMG.getImage().toGray()
@@ -61,6 +63,8 @@ while True:#While loop which grabs images until it is told to stop.
         avg = matrix.mean()
 	blobs = d.findBlobs()
 ##########################################{Blob}##########################################				
+	
+	
 	if avg >= 10: #average mean greater equal to 10
 		if blobs:
 
@@ -86,7 +90,8 @@ while True:#While loop which grabs images until it is told to stop.
 		print ("Processing %s...") 
 		print ("Intruder Image Stored!")
 		
-		
+def directoryname(directory)
+	if settime >= (Stime + Time):
 		for root, dirs, files in os.walk(directory, topdown=False):#checks the folder for images
 			for file in files:#finds the image
 				Sortfile = sorted(files)[0]
