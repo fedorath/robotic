@@ -53,7 +53,7 @@ threshold = 10#Threshold set to
 
 
 Stime = time.time()
-Time = 10#Time it takes to send the email
+Time = 30#Time it takes to send the email
 path = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
@@ -65,7 +65,7 @@ while True:#While loop which grabs images until it is told to stop.
 
         Photo1 = IMG.getImage().toGray()
 	
- 	Photo1 = Photo1.binarize(50).invert()
+ 	Photo1 = Photo1.binarize(50)
 	
         time.sleep(0.5)
 
@@ -73,9 +73,9 @@ while True:#While loop which grabs images until it is told to stop.
 
         Photo2 = IMG.getImage().toGray()
 	
-	Photo2 = Photo2.binarize(50).invert()
+	Photo2 = Photo2.binarize(50)
 	
-        diff = (Photo1 - Photo2)
+        diff = (Photo1 - Photo2).invert()
 
         matrix = diff.getNumpy()
         mean = matrix.mean()
