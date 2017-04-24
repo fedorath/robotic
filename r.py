@@ -64,15 +64,14 @@ while True:#While loop which grabs images until it is told to stop.
         settime = time.time()
 
         PIC1 = IMG.getImage().toGray()
-	PIC1B = PIC1.binarize(50)
+
         time.sleep(0.5)
 
-	original = IMG.getImage()
+	PIC = IMG.getImage()
 
         PIC2 = IMG.getImage().toGray()
-	PIC2B = PIC2.binarize(50)
 	
-        d = (PIC1B - PIC2B).invert()
+        d = (PIC1 - PIC2).invert().binarize(50)
 
 
         matrix = d.getNumpy()
@@ -107,7 +106,7 @@ while True:#While loop which grabs images until it is told to stop.
 		
 		while os.path.exists("Photo/Intruder%s-%s.png" % (name, i)):
 			i += 1
-		original.save("Photo/Intruder%s-%s.png" % (name, i))#saves photo with name
+		PIC.save("Photo/Intruder%s-%s.png" % (name, i))#saves photo with name
 		
 		print("Motion Detected")#prints into terminal
 ##########################################################################################################
