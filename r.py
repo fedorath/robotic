@@ -65,7 +65,7 @@ while True:#While loop which grabs images until it is told to stop.
 
         img01 = IMG.getImage().toGray()
 	
- 	img01 = binarize(50)
+ 	img01 = img01.binarize(50)
 	
         time.sleep(0.5)
 
@@ -73,7 +73,7 @@ while True:#While loop which grabs images until it is told to stop.
 
         img02 = IMG.getImage().toGray()
 	
-	img01 = binarize(50)
+	img01 = img01.binarize(50)
 	
         diff = (img01 - img02).invert()
 
