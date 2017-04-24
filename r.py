@@ -49,37 +49,39 @@ IMG = Camera()#Camera is intiated.
 
 width = 640
 height = 480
-threshold = 5.0#Threshold set to 
-
+threshold = 10#Threshold set to 
+Time = 10#Time it takes to send the email
 
 Stime = time.time()
-Time = 30#Time it takes to send the email
+
 path = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
 
-
+	
 while True:#While loop which grabs images until it is told to stop.
 
         settime = time.time()
 
-        Photo1 = IMG.getImage().toGray()
-	
+        img01 = IMG.getImage().toGray()
+
         time.sleep(0.5)
 
-	Photo = IMG.getImage()
+	original = IMG.getImage()
 
-        Photo2 = IMG.getImage().toGray()
+        img02 = IMG.getImage().toGray()
 
-        diff = (Photo1 - Photo2).binarize(50).invert()
+        diff = (img01 - img02).binarize(50).invert()
+
 
         matrix = diff.getNumpy()
         mean = matrix.mean()
-	
+
+
 	blobs = diff.findBlobs()
 
 	if settime >= (Stime + Time):
-		Stime = time.time()
+
 		for root, dirs, files in os.walk(path):#checks the folder for images
 			for file in files:#finds the image
 				Sortfile = sorted(files)[0]
@@ -87,14 +89,16 @@ while True:#While loop which grabs images until it is told to stop.
 				email(mailer)#sends image to email function
 
 				
-			
+				
 	if mean >= threshold:
+
+
 		if blobs:
 
-			for blob in blobs:
+			for b in blobs:
 				try:
-					loc = (blob.x,blob.y) 
-					original.drawCircle(loc,blob.radius(),Color.GREEN,2)
+					loc = (b.x,b.y) 
+					original.drawCircle(loc,b.radius(),Color.RED,2)
 				except:
 					e = sys.exc_info()[0]
 					
@@ -111,7 +115,7 @@ while True:#While loop which grabs images until it is told to stop.
 			#if it does, add one to the filename and try again
 			i += 1
 		#once a unique filename has been found, save the image
-		Photo.save("Photo/motion%s-%s.png" % (timestr, i))
+		original.save("Photo/motion%s-%s.png" % (timestr, i))
 		
 		print("Motion Detected")
 ##########################################################################################################
