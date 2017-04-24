@@ -74,7 +74,7 @@ while True:#While loop which grabs images until it is told to stop.
         d = (img01 - img02).binarize(50).invert()
 
 
-        matrix = d.getnp()
+        matrix = d.getNumpy()
         avg = matrix.mean()
 ####################################################################################################
 
