@@ -70,7 +70,7 @@ while True:#While loop which grabs images until it is told to stop.
 	original = IMG.getImage()
 
         PIC2 = IMG.getImage().toGray()
-	PIC2B = IMG.binarize(50)
+	PIC2B = PIC2.binarize(50)
 	
         d = (PIC1B - PIC2B).invert()
 
