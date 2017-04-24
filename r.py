@@ -105,7 +105,7 @@ while True:#While loop which grabs images until it is told to stop.
 					
 					
 		#use the current date to create a unique file name
-		strftime = datetime.datetime.now().strftime("%x")
+		timestr = datetime.datetime.now().strftime("%x")
 		
 		#initialize the counter variable
 		i = 1
