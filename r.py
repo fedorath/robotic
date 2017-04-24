@@ -47,12 +47,13 @@ def email(Gmail):
 
 IMG = Camera()#Camera is intiated.
 
-display = SimpleCV.Display()
+width = 640
+height = 480
 threshold = 10#Threshold set to 
-Time = 10#Time it takes to send the email
+
 
 Stime = time.time()
-
+Time = 10#Time it takes to send the email
 path = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
@@ -88,10 +89,8 @@ while True:#While loop which grabs images until it is told to stop.
 				email(mailer)#sends image to email function
 
 				
-				
+def simpleb():				
 	if mean >= threshold:
-
-
 		if blobs:
 
 			for b in blobs:
