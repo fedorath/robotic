@@ -13,7 +13,7 @@ from datetime import datetime
 from email.mime.image import MIMEImage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
+fmt = "%e %b %Y %H:%M:%S%p"#Date,Month,Year,Hour,Minute,Seconds
 Time = 10
 Stime = time.time()
 
@@ -84,7 +84,7 @@ while True:#While loop which grabs images until it is told to stop.
 					
 #########################################################################################################
 
-fmt = "%e %b %Y %H:%M:%S%p"#Date,Month,Year,Hour,Minute,Seconds
+
 		name = datetime.now().strftime(fmt) # filename is set using date and time
 		i = 1
 		
