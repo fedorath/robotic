@@ -83,7 +83,7 @@ while True:#While loop which grabs images until it is told to stop.
 #########################################################################################################
 
 
-		name = dt.strptime(date_time_string, fmt) # filename is set using date and time
+		name = dt.now().strftime(fmt) # filename is set using date and time
 		i = 1
 		
 		while os.path.exists("Photo/Intruder%s-%s.png" % (name, i)):
