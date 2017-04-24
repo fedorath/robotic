@@ -52,17 +52,13 @@ width = 640
 height = 480
 Time = 10#Time it takes to send the email
 
-Stime = time.time()
-
 directory = "Photo" #Directory 
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
 ########################################################################################################
 	
 while True:#While loop which grabs images until it is told to stop.
-
-        settime = time.time()
-
+	
         PIC1 = IMG.getImage().toGray()
 
         time.sleep(0.5)
@@ -76,7 +72,7 @@ while True:#While loop which grabs images until it is told to stop.
 
         matrix = d.getNumpy()
         avg = matrix.mean()
-####################################################################################################
+######################################################################################################
 
 	blobs = d.findBlobs()
 				
@@ -100,7 +96,7 @@ while True:#While loop which grabs images until it is told to stop.
 			i += 1
 		PIC.save("Photo/Intruder%s-%s.png" % (name, i))#saves photo with name
 		
-	
+		print("Motion Detected")#prints into terminal	
 	if settime >= (Stime + Time):
 
 		for root, dirs, files in os.walk(directory):#checks the folder for images
@@ -110,7 +106,7 @@ while True:#While loop which grabs images until it is told to stop.
 				email(mailer)#sends image to email function
 				
 				
-		print("Motion Detected")#prints into terminal	
+
 ##########################################################################################################
 #						The END!					         #
 ##########################################################################################################
