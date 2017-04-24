@@ -66,7 +66,7 @@ while True:#While loop which grabs images until it is told to stop.
 
         time.sleep(0.5)
 
-	PH = IMG.getImage()
+	original = IMG.getImage()
 
         img02 = IMG.getImage().toGray()
 
@@ -114,7 +114,7 @@ while True:#While loop which grabs images until it is told to stop.
 			#if it does, add one to the filename and try again
 			i += 1
 		#once a unique filename has been found, save the image
-		PH.save("Photo/motion%s-%s.png" % (timestr, i))
+		original.save("Photo/motion%s-%s.png" % (timestr, i))
 		
 		print("Motion Detected")
 ##########################################################################################################
