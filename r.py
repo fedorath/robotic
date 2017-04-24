@@ -58,6 +58,7 @@ path = "Photo" #Directory
 if not os.path.exists("Photo"):
 	os.makedirs("Photo")
 
+def img():
 	
 while True:#While loop which grabs images until it is told to stop.
 
@@ -89,7 +90,7 @@ while True:#While loop which grabs images until it is told to stop.
 				email(mailer)#sends image to email function
 
 				
-def simpleb():				
+def simpleb(img):				
 	if mean >= threshold:
 		if blobs:
 
