@@ -50,7 +50,7 @@ IMG = Camera()#Camera is intiated.
 
 width = 640
 height = 480
-Time = 10#Time it takes to send the email
+
 
 directory = "Photo" #Directory 
 if not os.path.exists("Photo"):
