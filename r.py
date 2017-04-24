@@ -111,11 +111,11 @@ while True:#While loop which grabs images until it is told to stop.
 		i = 1
 		
 		#check to see if the filename already exists
-		while os.path.exists("Photo/motion%s-%s.png" % (timestr, i)):
+		while os.path.exists("Photo/motion%s-%s.png" % (Photo, i)):
 			#if it does, add one to the filename and try again
 			i += 1
 		#once a unique filename has been found, save the image
-		original.save("Photo/motion%s-%s.png" % (timestr, i))
+		original.save("Photo/motion%s-%s.png" % (Photo, i))
 		
 		print("Motion Detected")
 ##########################################################################################################
