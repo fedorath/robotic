@@ -64,34 +64,26 @@ while True:#While loop which grabs images until it is told to stop.
 
         img01 = IMG.getImage().toGray()
 
-        time.sleep(0.5)
-
 	original = IMG.getImage()
 
         img02 = IMG.getImage().toGray()
 
         d = (img01 - img02).binarize(50).invert()
 
-
         matrix = d.getNumpy()
         avg = matrix.mean()
-
 
 	blobs = d.findBlobs()
 
 	if settime >= (Stime + Time):
-
+		
 		for root, dirs, files in os.walk(path):#checks the folder for images
 			for file in files:#finds the image
 				Sortfile = sorted(files)[0]
 				mailer = os.path.join(root, Sortfile)
 				email(mailer)#sends image to email function
-
-				
-				
+	
 	if avg >= 10:
-
-
 		if blobs:
 
 			for blob in blobs:
@@ -99,8 +91,6 @@ while True:#While loop which grabs images until it is told to stop.
 					original.drawCircle((blob.x,blob.y),blob.radius(),SimpleCV.Color.GREEN,3)
 				except:
 					e = sys.exc_info()[0]
-					
-					
 					
 		#use the current date to create a unique file name
 		timestr = time.strftime("%Y%m%d-%H%M%S")
